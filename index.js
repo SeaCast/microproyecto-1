@@ -30,6 +30,7 @@ miStorage = window.localStorage;
 const highScores = JSON.parse(miStorage.getItem('Jugadores')) || [];
 console.log(highScores);
 
+//Actualizar la tabla de puntuaciones
 const updateLeaderboard = () => {
     leaderboardArea.innerHTML = "";
     if(highScores.length != 0){
@@ -59,14 +60,16 @@ const updateLeaderboard = () => {
 
 //Funciones
 
+//Añadir la puntuacion si se gano el juego
 const addScore = () => {
-
+    //Se crea un objeto "jugador" con el nombre y la puntuacion obtenida
     const jugador = {
         userName : playerName,
         score : currentScore
     };
-
+    //Se ingresa el jugador al array
     highScores.push(jugador);
+    //El 
     highScores.sort((a, b) => b.score - a.score);
     miStorage.setItem('Jugadores', JSON.stringify(highScores));
 
@@ -99,8 +102,8 @@ startButton.addEventListener("click", async () => {
 
     startButton.style.display = "none";
     inputArea.style.display = "none";
-    timerArea.style.display = "block";
-    scoreArea.style.display = "block";
+    timerArea.style.display = "flex";
+    scoreArea.style.display = "flex";
     currentTime = timerMinutes * 60;
 
     let gameTimer = setInterval(updateTimer, 1000);
@@ -110,10 +113,10 @@ startButton.addEventListener("click", async () => {
         alert("Se acabo el tiempo");
         gameElement.innerHTML = "";
         revealedCards = 0;
-        startButton.style.display = "block";
-        inputArea.style.display = "inline";
+        startButton.style.display = "flex";
+        inputArea.style.display = "flex";
         timerArea.style.display = "none";
-        scoreArea.style.display = "block";
+        scoreArea.style.display = "none";
         activeCard = null;
         awaitingEndOfMove = false;
         playerName = "";
@@ -183,8 +186,8 @@ startButton.addEventListener("click", async () => {
                     alert("Has ganado!");
                     gameElement.innerHTML = "";
                     revealedCards = 0;
-                    startButton.style.display = "block";
-                    inputArea.style.display = "inline";
+                    startButton.style.display = "flex";
+                    inputArea.style.display = "flex";
                     timerArea.style.display = "none";
                     scoreArea.style.display = "none";
                     activeCard = null;

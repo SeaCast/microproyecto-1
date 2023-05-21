@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -19,7 +22,7 @@
 
     <section class="explanationArea">
         <p id="gameInstructions">Introduce to nombre y da click al boton de iniciar para comenzar el juego. Una vez iniciado tendras 3 minutos para encontrar todos los pares, da click sobre las tarjetas para revelar su imagen, si seleccionas un par incorrecto deberas volver a intentarlo, al seleccionar los pares correctos, estos seguiran visibles hasta el final del juego.
-            Tu puntaje dependera de cuanto demores en encontrar todos los pares!
+            Tu puntaje dependera de cuanto demores en encontrar todos los pares de las obras de la Unimet!
         </p>
         <img src="./reloj.png" alt="Foto de reloj" id="explanationClock">
     </section>
@@ -30,11 +33,16 @@
     </section>
 
     <section class="startArea">
+        <div id="inputArea">
+            <input type="text" name="playerName" id="pName" class="nameInput" placeholder="Nombre"/>
+            <button type="button" class="nameButton" id="nameButton">Iniciar</button>
+        </div>
 
-        <input type="text" name="playerName" id="pName" class="nameInput" placeholder="Nombre"/>
-        <button type="button" class="nameButton" id="nameButton">Iniciar</button>
-        <p id="gameTime"></p>
-        <p id="gameScore"></p>
+
+        <div id="statusArea">
+            <p id="gameTime"></p>
+            <p id="gameScore"></p>
+        </div>
 
     </section>
 
@@ -44,8 +52,8 @@
         <h2>Lista de puntajes:</h2>
         <div class="gameLeaderboard" id="gameLeaderboard">
             <div class="boardInfo">
-                <p class="EntryInfo">Nombre</p>
-                <p class="EntryInfo">Puntuacion</p>
+                <p class="boardTitle">Nombre</p>
+                <p class="boardTitle">Puntuacion</p>
             </div>
 
             <div class="boardContents" id="boardContents">

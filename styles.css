@@ -1,31 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: lightgoldenrodyellow;
+    background-color: #4F5D75;
 }
 
 h1 {
     text-align: center;
     font-size: 40px;
-    color: black;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
 }
 
 h2 {
     text-align: center;
     font-size: 35px;
     color: white;
+    background-color: #2D3142;
+    font-family: 'Lato', sans-serif;
 }
 
 .explanationArea {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 25px;
-    padding-left: 5px;
+    padding: 2%;
+    padding-left: 0.2%;
 }
 
 #gameInstructions {
     text-align: justify;
     text-indent: 2px;
-    padding: 50px;
+    padding: 4%;
     line-height: 30px;
 }
 
@@ -37,14 +50,20 @@ h2 {
 .startArea {
     display: flex;
     justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #2D3142;
+    height: 40px;
+    padding-top: 0.5%;
 }
 
 .gameArea{
     display: grid;
     grid-template-columns: repeat(4, 100px);
     margin: auto;
+    margin-bottom: 1.3%;
     width: max-content;
-    gap: 6px;
+    gap: 1%;
 }
 
 .gameCard{
@@ -59,16 +78,13 @@ h2 {
 #gameTime {
     text-align: center;
     display: none;
+    width: 65%;
 }
 
 #gameScore {
     text-align: center;
     display: none;
-}
-
-.GameEntry{
-    display: flex;
-    justify-content: space-evenly;
+    width: 35%;
 }
 
 .boardInfo{
@@ -78,8 +94,8 @@ h2 {
 
 #gameInstructions {
     background-color: #2D3142;
-    margin: 10px;
-    margin-right: 20px;
+    margin: 0.5%;
+    margin-right: 1.3%;
     font-size: 20px;
     color: white;
 }
@@ -87,11 +103,64 @@ h2 {
 hr {
     height: 10px;
     background-color: #EF8354;
+    border-color: #EF8354;
 }
 
-.leaderboardArea{
+.gameLeaderboard{
     background-color: #2D3142;
     color: white;
-    margin-right: 100px;
-    margin-left: 100px
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-bottom: 0.5%;
+}
+
+.GameEntry {
+    margin-top: 0.8%;
+    margin-bottom: 0.4%;
+    margin-left: 17%;
+    margin-right: 17%;
+    padding-left: 13%;
+    padding-right: 13%;
+    background-color: #EF8354;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#statusArea {
+    display: flex;
+    padding-bottom: 1%;
+    align-items: center;
+    color: white;
+    justify-content: space-evenly;
+}
+
+#inputArea {
+    display: flex;
+    padding-bottom: 0.5%;
+}
+
+#gameTime {
+    margin-right: 0.5%;
+}
+
+#gameScore{
+    margin-left: 0.5%;
+}
+
+#nameButton {
+    color:black;
+    background-color: #EF8354;
+    border-radius: 2px;
+    border-color: #EF8354;
+}
+
+.EntryInfo {
+    font-weight: bold;
+    color:white;
+}
+
+.boardTitle {
+    font-weight: bold;
+    color:#EF8354
 }
