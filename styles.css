@@ -1,0 +1,53 @@
+body {
+    background-color: whitesmoke;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.explanationArea {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#gameInstructions {
+    text-align: justify;
+    text-indent: 2px;
+    padding: 50px;
+    line-height: 30px;
+}
+
+#explanationClock {
+    height: 200px;
+    width: 200px;
+}
+
+.startArea {
+    display: flex;
+    justify-content: center;
+}
+
+.gameArea{
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    margin: auto;
+    width: max-content;
+    gap: 6px;
+}
+
+.gameCard{
+    height: 100px;
+    width: 100px;
+}
+
+.gameCard {
+    background-image: url("./Nada.png")
+}
+
+#gameTime {
+    text-align: center;
+    display: none;
+}

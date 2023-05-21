@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+
+    
+</head>
+<body>
+
+    <section class="topArea">
+        <h1 id="gameTitle">Juego de memoria</h1>
+    </section>
+
+    <hr>
+
+    <section class="explanationArea">
+        <p id="gameInstructions">Introduce to nombre y da click al boton de iniciar para comenzar el juego. Una vez iniciado tendras 3 minutos para encontrar todos los pares, da click sobre las tarjetas para revelar su imagen, si seleccionas un par incorrecto deberas volver a intentarlo, al seleccionar los pares correctos, estos seguiran visibles hasta el final del juego.
+            Tu puntaje dependera de cuanto demores en encontrar todos los pares!
+        </p>
+        <img src="./reloj.png" alt="Foto de reloj" id="explanationClock">
+    </section>
+
+    <hr>
+    
+    <section class="gameArea" id="gameArea">
+    </section>
+
+    <section class="startArea">
+
+        <input type="text" name="playerName" id="pName" class="nameInput" placeholder="Nombre"/>
+        <button type="button" class="nameButton" id="nameButton">Iniciar</button>
+        <p id="gameTime"></p>
+
+    </section>
+
+    <hr>
+
+    <section class="gameLeaderboard">
+
+
+    </section>
+
+</body>
+<script src="./index.js">
+</script>
+</html>
