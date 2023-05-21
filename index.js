@@ -3,6 +3,8 @@ const startButton = document.getElementById("nameButton"); //Boton
 const gameElement = document.getElementById("gameArea"); //Area de cartas
 const inputArea = document.getElementById("pName"); //Input de nombre de usuario
 const timerArea = document.getElementById("gameTime"); //Temporizador
+const scoreArea = document.getElementById("gameScore"); //Puntuacion
+const leaderboardArea = document.getElementById("boardContents") //Tabla de puntuaciones
 
 
 // Cantidad de cartas y tipos de cartas
@@ -20,8 +22,56 @@ const timerMinutes = 3;
 let currentTime = 0;
 let minutes = 0;
 let seconds = 0;
+const maxScore = 10000;
+let currentScore = 0;
+
+//Almacenamiento
+miStorage = window.localStorage;
+const highScores = JSON.parse(miStorage.getItem('Jugadores')) || [];
+console.log(highScores);
+
+const updateLeaderboard = () => {
+    leaderboardArea.innerHTML = "";
+    if(highScores.length != 0){
+        for(let j = 0; j < highScores.length; j++){
+            const elementEntry = document.createElement("div");
+            elementEntry.setAttribute("class", "GameEntry");
+
+            const elementName = document.createElement("p");
+            elementName.setAttribute("class", "EntryInfo");
+            elementName.innerHTML = highScores[j]["userName"];
+
+            const elementScore = document.createElement("p");
+            elementScore.setAttribute("class", "EntryInfo");
+            elementScore.innerHTML = highScores[j]["score"];
+
+            elementEntry.appendChild(elementName);
+            elementEntry.appendChild(elementScore);
+
+            leaderboardArea.appendChild(elementEntry);
+        }
+    
+    }
+
+}
+
+
 
 //Funciones
+
+const addScore = () => {
+
+    const jugador = {
+        userName : playerName,
+        score : currentScore
+    };
+
+    highScores.push(jugador);
+    highScores.sort((a, b) => b.score - a.score);
+    miStorage.setItem('Jugadores', JSON.stringify(highScores));
+
+    return;
+}
 
 const updateTimer = () => {
     minutes = Math.floor(currentTime / 60);
@@ -29,14 +79,16 @@ const updateTimer = () => {
 
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    timerArea.innerHTML = `${minutes}m : ${seconds}s`;
+    currentScore = Math.floor(maxScore * (((minutes * 60) + seconds) / (timerMinutes * 60 )));
+
+    timerArea.innerHTML = `Tiempo Restante: ${minutes}m : ${seconds}s `;
+    scoreArea.innerHTML = `Puntuacion: ${currentScore}`
     currentTime--;
 }
 
 startButton.addEventListener("click", async () => {
 
     playerName = inputArea.value;
-    console.log(playerName);
     if (playerName === ""){
         alert("No puede ingresar un nombre de usuario vacio");
         return;
@@ -48,6 +100,7 @@ startButton.addEventListener("click", async () => {
     startButton.style.display = "none";
     inputArea.style.display = "none";
     timerArea.style.display = "block";
+    scoreArea.style.display = "block";
     currentTime = timerMinutes * 60;
 
     let gameTimer = setInterval(updateTimer, 1000);
@@ -60,6 +113,7 @@ startButton.addEventListener("click", async () => {
         startButton.style.display = "block";
         inputArea.style.display = "inline";
         timerArea.style.display = "none";
+        scoreArea.style.display = "block";
         activeCard = null;
         awaitingEndOfMove = false;
         playerName = "";
@@ -125,8 +179,6 @@ startButton.addEventListener("click", async () => {
                 activeCard = null;
                 revealedCards += 2;
 
-                console.log(revealedCards);
-
                 if (revealedCards === cardAmount){
                     alert("Has ganado!");
                     gameElement.innerHTML = "";
@@ -134,10 +186,13 @@ startButton.addEventListener("click", async () => {
                     startButton.style.display = "block";
                     inputArea.style.display = "inline";
                     timerArea.style.display = "none";
+                    scoreArea.style.display = "none";
                     activeCard = null;
                     awaitingEndOfMove = false;
                     clearTimeout(timeLimit);
                     clearInterval(gameTimer);
+                    addScore();
+                    updateLeaderboard();
 
                 }
 
@@ -163,3 +218,6 @@ startButton.addEventListener("click", async () => {
     }
 
 })
+
+updateLeaderboard();
+

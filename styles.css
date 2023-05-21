@@ -1,16 +1,25 @@
 body {
-    background-color: whitesmoke;
+    background-color: lightgoldenrodyellow;
 }
 
 h1 {
     text-align: center;
     font-size: 40px;
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    font-size: 35px;
+    color: white;
 }
 
 .explanationArea {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding: 25px;
+    padding-left: 5px;
 }
 
 #gameInstructions {
@@ -50,4 +59,39 @@ h1 {
 #gameTime {
     text-align: center;
     display: none;
+}
+
+#gameScore {
+    text-align: center;
+    display: none;
+}
+
+.GameEntry{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boardInfo{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#gameInstructions {
+    background-color: #2D3142;
+    margin: 10px;
+    margin-right: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+hr {
+    height: 10px;
+    background-color: #EF8354;
+}
+
+.leaderboardArea{
+    background-color: #2D3142;
+    color: white;
+    margin-right: 100px;
+    margin-left: 100px
 }
